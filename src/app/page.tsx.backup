@@ -1,0 +1,812 @@
+'use client';
+
+import { useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import DotGrid from '@/components/DotGrid';
+import GooeyNavigation from '@/components/GooeyNavigation';
+import Skills from '@/components/Skills';
+import ProjectGallery from '@/components/ProjectGallery';
+import Testimonials from '@/components/Testimonials';
+import DotGridBackgroundImproved from '@/components/DotGridBackgroundImproved';
+import RotatingText from '@/components/ui/RotatingText';
+import { useTheme } from '@/contexts/ThemeContext';
+
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+export default function Home() {
+  const { darkMode } = useTheme();
+  const heroRef = useRef<HTMLDivElement>(null);
+  const bioTextRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
+  const glowEffectRef = useRef<HTMLDivElement>(null);
+  const projectsSectionRef = useRef<HTMLElement>(null);f, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import DotGrid from '@/components/DotGrid';
+import GooeyNavigation from '@/components/GooeyNavigation';
+import Skills from '@/components/Skills';
+import ProjectGallery from '@/components/ProjectGallery';
+import Testimonials from '@/components/Testimonials';
+import DotGridBackgroundImproved from '@/components/DotGridBackgroundImproved';
+import RotatingText from '@/components/ui/RotatingText';
+import { useTheme } from '@/contexts/ThemeContext';
+
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+export default function Home() {
+  const { darkMode } = useTheme();
+  const heroRef = useRef<HTMLDivElement>(null);
+  const bioTextRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
+  const glowEffectRef = useRef<HTMLDivElement>(null);
+  const projectsSectionRef = useRef<HTMLElement>(null);
+
+  // Array of simple font styles for rotating text
+  const nameStyles = [
+    "font-normal",
+    "font-medium",
+    "font-semibold", 
+    "font-bold",
+    "font-light",
+    "font-thin",
+    "italic",
+    "font-mono",
+    "font-serif",
+    "uppercase",
+    "lowercase",
+    "capitalize"
+  ];
+
+  // Canvas background effect
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const config = {
+      gridSize: 20,
+      lineWidth: 0.4,
+      lineColor: darkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+      waveSpeed: 0.004,
+      waveHeight: 5,
+      noiseScale: 0.005
+    };
+
+    const cols = Math.floor(width / config.gridSize) + 2;
+    const rows = Math.floor(height / config.gridSize) + 2;
+    const points: any[] = [];
+
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        points.push({
+          x: x * config.gridSize,
+          y: y * config.gridSize,
+          originX: x * config.gridSize,
+          originY: y * config.gridSize
+        });
+      }
+    }
+
+    const noise = (x: number, y: number) => {
+      const X = Math.floor(x) & 255;
+      const Y = Math.floor(y) & 255;
+      return Math.sin(X * 0.1 + Y * 0.1) * Math.cos(X * 0.11 + Y * 0.09) * 0.5 + 0.5;
+    };
+
+    let animationTime = 0;
+    let animationFrameId: number;
+
+    function animate() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      animationTime += config.waveSpeed;
+
+      for (let i = 0; i < points.length; i++) {
+        const point = points[i];
+        const noiseX = noise(point.originX * config.noiseScale, point.originY * config.noiseScale + animationTime);
+        const noiseY = noise(point.originX * config.noiseScale + animationTime, point.originY * config.noiseScale);
+        point.x = point.originX + (noiseX * 2 - 1) * config.waveHeight;
+        point.y = point.originY + (noiseY * 2 - 1) * config.waveHeight;
+      }
+
+      ctx.beginPath();
+      ctx.strokeStyle = config.lineColor;
+      ctx.lineWidth = config.lineWidth;
+
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols - 1; x++) {
+          const index = y * cols + x;
+          const point = points[index];
+          const nextPoint = points[index + 1];
+          ctx.moveTo(point.x, point.y);
+          ctx.lineTo(nextPoint.x, nextPoint.y);
+        }
+      }
+
+      for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows - 1; y++) {
+          const index = y * cols + x;
+          const point = points[index];
+          const nextPoint = points[index + cols];
+          ctx.moveTo(point.x, point.y);
+          ctx.lineTo(nextPoint.x, nextPoint.y);
+        }
+      }
+
+      ctx.stroke();
+      animationFrameId = requestAnimationFrame(animate);
+    }
+
+    function handleResize() {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      const newCols = Math.floor(width / config.gridSize) + 2;
+      const newRows = Math.floor(height / config.gridSize) + 2;
+      points.length = 0;
+
+      for (let y = 0; y < newRows; y++) {
+        for (let x = 0; x < newCols; x++) {
+          points.push({
+            x: x * config.gridSize,
+            y: y * config.gridSize,
+            originX: x * config.gridSize,
+            originY: y * config.gridSize
+          });
+        }
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    animationFrameId = requestAnimationFrame(animate);
+
+    // GSAP Animations
+    if (bioTextRef.current) {
+      const spanElements = bioTextRef.current.querySelectorAll('span');
+      if (spanElements.length > 0) {
+        gsap.fromTo(
+          spanElements,
+          { 
+            opacity: 0,
+            y: 20 
+          },
+          { 
+            opacity: 1, 
+            y: 0,
+            stagger: 0.1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: bioTextRef.current,
+              start: "top 80%"
+            }
+          }
+        );
+      }
+    }
+
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [darkMode]);
+
+  // Setup ScrollTrigger for text straps with locomotive-like effect
+  useEffect(() => {
+    // Clear any existing ScrollTrigger instances first
+    ScrollTrigger.getAll()
+      .filter(trigger => trigger.vars.id?.includes('textStrap'))
+      .forEach(trigger => trigger.kill());
+    
+    // Design text strap animation
+    const designStrapEl = document.querySelector('.design-strap-container');
+    if (designStrapEl) {
+      const designText = designStrapEl.querySelector('.scroll-text');
+      if (designText) {
+        const designTextWidth = designText.getBoundingClientRect().width;
+        
+        const designClone = designText.cloneNode(true);
+        designStrapEl.appendChild(designClone);
+        
+        gsap.set(designClone, { x: designTextWidth });
+        
+        gsap.to([designText, designClone], {
+          x: `-=${designTextWidth}`,
+          ease: "none",
+          scrollTrigger: {
+            id: "textStrap-design",
+            trigger: designStrapEl,
+            start: "top bottom",
+            end: "+=" + (designTextWidth * 2),
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          }
+        });
+      }
+    }
+    
+    // Code text strap animation
+    const codeStrapEl = document.querySelector('.code-strap-container');
+    if (codeStrapEl) {
+      const codeText = codeStrapEl.querySelector('.scroll-text');
+      if (codeText) {
+        const codeTextWidth = codeText.getBoundingClientRect().width;
+        
+        const codeClone = codeText.cloneNode(true);
+        codeStrapEl.appendChild(codeClone);
+        
+        gsap.set(codeText, { x: -codeTextWidth * 0.3 });
+        gsap.set(codeClone, { x: codeTextWidth * 0.4 });
+        
+        gsap.to([codeText, codeClone], {
+          x: `+=${codeTextWidth * 0.7}`,
+          ease: "none",
+          scrollTrigger: {
+            id: "textStrap-code",
+            trigger: codeStrapEl,
+            start: "top bottom",
+            end: "+=" + (codeTextWidth * 2),
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          }
+        });
+      }
+    }
+
+    return () => {
+      // Clean up ScrollTrigger instances when component unmounts
+      ScrollTrigger.getAll()
+        .filter(trigger => trigger.vars.id?.includes('textStrap'))
+        .forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  return (
+    <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
+      {/* Navigation */}
+      <GooeyNavigation />
+
+      {/* Hero Section with Galaxy Background */}
+      <section
+        ref={heroRef}
+        className="relative h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* Dot Grid Background */}
+        <div className="absolute inset-0 z-0">
+          <DotGrid 
+            dotSize={5}
+            gap={15}
+            baseColor="#1E1E37" /* R-30, G-30, B-55 */
+            activeColor="#5227FF" /* R-82, G-39, B-255 */
+            proximity={120}
+            shockRadius={250}
+            shockStrength={5}
+            resistance={750}
+            returnDuration={1.5}
+          />
+        </div>
+
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 z-1 opacity-40"
+        ></canvas>
+        
+        <div
+          ref={glowEffectRef}
+          className="absolute bottom-4 left-0 right-0 flex justify-center items-center pointer-events-none"
+          style={{ zIndex: 1 }}
+        >
+          <div className="w-[90vw] h-[35vh] rounded-full" 
+            style={{ 
+              background: 'radial-gradient(circle, rgba(255,255,255,0.07) 0%, rgba(200,200,200,0.05) 40%, rgba(255,255,255,0) 70%)',
+              transform: 'translateY(25%)',
+              filter: 'blur(50px)',
+              opacity: 0.7
+            }}>
+          </div>
+        </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 text-center px-4">
+          <motion.div
+            ref={subtitleRef}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="mb-4 text-2xl md:text-3xl lg:text-4xl text-gray-300 font-medium"
+          >
+            <RotatingText 
+              text={[
+                "Hello",        // English
+                "नमस्ते",      // Hindi
+                "Hola"          // Spanish
+              ]} 
+              styles={["font-medium", "font-semibold", "font-bold", "italic", "font-normal"]} 
+              interval={2500} 
+            />, I'm
+          </motion.div>
+          
+          <motion.h1
+            ref={nameRef}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+          >
+            <span className="text-white">
+              Rohit <RotatingText 
+                text={[
+                  "Sharma",           // English
+                  "शर्मा",             // Hindi
+                  "شرما",              // Urdu
+                  "シャルマ",            // Japanese
+                  "夏尔马",             // Chinese
+                 // "샤르마",             // Korean
+                  "Шарма",            // Russian
+                 // "شارما",             // Arabic
+                  "Σάρμα",            // Greek
+                  "Sharma",           // German/French (same)
+                   "შარმა",            // Georgian
+                  // "ශර්මා"             // Sinhala
+                ]} 
+                styles={nameStyles} 
+                interval={2500} 
+              />
+            </span>
+          </motion.h1>
+          
+          <motion.div
+            ref={bioTextRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="max-w-lg mx-auto text-xl md:text-2xl text-gray-200 font-light"
+          >
+            <span className="inline-block mr-2">Pixels</span>
+            <span className="inline-block mr-2 font-bold italic gradient-text">obey</span>
+            <span className="inline-block mr-2">me & </span>
+            <span className="inline-block mr-2">Logic</span>
+            <span className="inline-block mr-2 font-bold italic gradient-text">serves</span>
+            <span className="inline-block">me.</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.8 }}
+            className="mt-10"
+          >
+            <a
+              href="#about"
+              className="
+                inline-flex items-center justify-center
+                w-12 h-12 rounded-full
+                bg-gray-800 hover:bg-gray-700
+                text-gray-300
+                shadow-md transition-all duration-300 animate-bounce
+              "
+              style={{ animationDuration: '3s' }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 13l5 5 5-5"></path>
+                <path d="M7 6l5 5 5-5"></path>
+              </svg>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+      
+      {/* Scrolling Text Strap Section */}
+      <section 
+        className="bg-black py-6 overflow-hidden relative transform -rotate-[0.8deg]"
+        style={{ 
+          zIndex: 10,
+          boxShadow: '0 8px 20px rgba(0,0,0,0.1)'
+        }}
+      >
+        <div className="design-strap-container" style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}>
+          <div className="scroll-text">
+            <h2 className="text-white font-bold italic text-4xl md:text-5xl lg:text-6xl">
+              <span className="pastel-gradient">design</span> that makes people give a damn • 
+              <span className="pastel-gradient">design</span> that makes people give a damn • 
+              <span className="pastel-gradient">design</span> that makes people give a damn • 
+              <span className="pastel-gradient">design</span> that makes people give a damn • 
+            </h2>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 opacity-70"></div>
+      </section>
+      
+      {/* White Scrolling Text Strap for Code */}
+      <section 
+        className="bg-gray-800 py-6 overflow-hidden relative transform rotate-[1.2deg] -mt-3 border-t border-b border-gray-700"
+        style={{ 
+          zIndex: 5,
+          boxShadow: '0 -4px 15px rgba(0,0,0,0.2), 0 4px 15px rgba(0,0,0,0.2)'
+        }}
+      >
+        <div className="code-strap-container" style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}>
+          <div className="scroll-text">
+            <h2 className="text-gray-200 font-mono text-3xl md:text-4xl lg:text-5xl">
+              <span className="terminal-code">code</span> that brings it to life ; 
+              <span className="terminal-code">code</span> that brings it to life ; 
+              <span className="terminal-code">code</span> that brings it to life ; 
+              <span className="terminal-code">code</span> that brings it to life ;
+            </h2>
+          </div>
+        </div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700"></div>
+      </section>
+
+      {/* Clear separation between Galaxy section and Dot Grid sections */}
+      <div className="h-1 w-full bg-transparent"></div>
+
+      {/* Dot Grid Background for remaining sections */}
+      <div className="relative" style={{ marginTop: "-1px" }}>
+        {/* The DotGridBackgroundImproved is positioned to start from the About section */}
+        <DotGridBackgroundImproved startFrom="#about" />
+
+        {/* About Section */}
+        <section id="about" className="relative min-h-screen py-20 z-10">
+          <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
+            <h2 className="font-bold text-4xl md:text-5xl lg:text-7xl mb-12 text-gray-100 leading-tight">
+              Hey I'm <span className="font-bold italic">Rohit Sharma</span> - I make <span className="font-bold italic gradient-text">pixels</span> meet <span className="font-mono font-thin">code</span>
+            </h2>
+            <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed mx-auto">
+              I <span className="italic">design with intent</span> and <span className="font-mono font-thin">code</span> with efficiency—crafting sleek, intuitive experiences that are as smooth to use as they are to look at. No guesswork, no mess—just <span className="italic">clean design, seamless functionality</span>, and a developer's touch to bring it all to life.
+            </p>
+          </div>
+        </section>
+        
+        {/* Skills Section with higher z-index to appear above the grid */}
+        <div className="relative z-10">
+          <Skills />
+        </div>
+
+        {/* Latest Projects Section - Comprehensive SDE Portfolio */}
+        <section id="projects" className="relative py-20 z-10">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl mb-6 text-gray-100">
+                Latest <span className="font-bold italic gradient-text">Projects</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+                Showcasing <span className="font-mono font-medium text-purple-400">25+ projects</span> across full-stack development, AI/ML, and system design
+              </p>
+            </div>
+
+            {/* Project Categories Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              
+              {/* Full-Stack Development */}
+              <div className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:bg-gray-800/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-100">Full-Stack Development</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    Complete web applications with modern tech stacks, focusing on scalability and user experience.
+                  </p>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">E-Commerce Platform</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">React + Node.js</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Task Management System</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">Next.js + TypeScript</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Social Media Dashboard</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">MERN Stack</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">React</span>
+                    <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full">Node.js</span>
+                    <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">Next.js</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* AI/ML & Data Science */}
+              <div className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:bg-gray-800/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mr-4">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-100">AI/ML & Data Science</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    Intelligent systems using machine learning, deep learning, and computer vision technologies.
+                  </p>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Image Classification Model</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">TensorFlow</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-teal-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">NLP Sentiment Analyzer</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">Python + NLTK</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Predictive Analytics Tool</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">Scikit-learn</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded-full">TensorFlow</span>
+                    <span className="text-xs bg-teal-500/20 text-teal-300 px-2 py-1 rounded-full">Python</span>
+                    <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded-full">OpenAI</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile & Cross-Platform */}
+              <div className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:bg-gray-800/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mr-4">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-100">Mobile & Cross-Platform</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    Native and cross-platform mobile applications with modern UI/UX patterns.
+                  </p>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Fitness Tracking App</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">React Native</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Food Delivery Platform</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">Flutter</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Chat Application</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">Firebase</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full">React Native</span>
+                    <span className="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded-full">Flutter</span>
+                    <span className="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded-full">Firebase</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Backend & DevOps */}
+              <div className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:bg-gray-800/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mr-4">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-100">Backend & DevOps</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    Scalable backend architectures, APIs, and deployment pipelines with cloud integration.
+                  </p>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Microservices Architecture</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">Node.js + Docker</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">REST API Gateway</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">Express.js</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-teal-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">CI/CD Pipeline</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">AWS + GitHub</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">AWS</span>
+                    <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded-full">Docker</span>
+                    <span className="text-xs bg-teal-500/20 text-teal-300 px-2 py-1 rounded-full">Kubernetes</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Data Structures & Algorithms */}
+              <div className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:bg-gray-800/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mr-4">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-100">DSA & Problem Solving</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    Optimized algorithms and data structure implementations for competitive programming.
+                  </p>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">LeetCode Solutions</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">500+ Problems</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Graph Algorithms Visualizer</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">JavaScript</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Sorting Algorithm Analyzer</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">Python</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded-full">Algorithms</span>
+                    <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded-full">Data Structures</span>
+                    <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded-full">Optimization</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Open Source & Leadership */}
+              <div className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:bg-gray-800/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-xl flex items-center justify-center mr-4">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-100">Open Source & Leadership</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    Community contributions, mentorship, and leading technical teams in collaborative projects.
+                  </p>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-pink-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">SWOC Mentorship</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">50+ Students</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">GitHub Contributions</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">200+ Commits</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3"></span>
+                      <span className="text-gray-200 font-medium">Tech Community Speaker</span>
+                      <span className="ml-auto text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">5+ Events</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-pink-500/20 text-pink-300 px-2 py-1 rounded-full">Leadership</span>
+                    <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">Mentorship</span>
+                    <span className="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded-full">Open Source</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Stats Section */}
+            <div className="mt-16 text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">25+</div>
+                  <div className="text-gray-300 text-sm uppercase tracking-wider">Projects Completed</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">15+</div>
+                  <div className="text-gray-300 text-sm uppercase tracking-wider">Technologies Mastered</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">500+</div>
+                  <div className="text-gray-300 text-sm uppercase tracking-wider">DSA Problems Solved</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-orange-400 mb-2">50+</div>
+                  <div className="text-gray-300 text-sm uppercase tracking-wider">Students Mentored</div>
+                </div>
+              </div>
+            </div>
+
+            {/* View More Button */}
+            <div className="text-center mt-12">
+              <button className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-semibold text-lg hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group">
+                <span>Explore All Projects</span>
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section - New Component */}
+        <div className="relative z-10">
+          <ProjectGallery />
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="relative z-10">
+          <Testimonials />
+        </div>
+        
+        {/* Contact Section */}
+        <section id="contact" className="relative min-h-screen py-20 z-10">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-gray-100 mb-6">
+              Done with my <span className="font-bold italic gradient-text">designer</span> side?
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+              Explore my developer portfolio to see the code behind the designs
+            </p>
+            <a 
+              href="https://rohitsharma.vercel.app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-semibold text-lg hover:opacity-90 transition-opacity duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform duration-300"
+            >
+              View Developer Portfolio
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,9 @@
+TO FIX PROFILE CARD IMAGE DISPLAY:
+
+1. Save the attached professional photo as "pfp.jpg" in this folder (e:\Business\Portfolio\public\)
+2. The file should be named exactly "pfp.jpg" (all lowercase)
+3. After saving, refresh your browser at localhost:3001/about
+
+The ProfileCard component is looking for /pfp.jpg and will display your photo once it's saved in this location.
+
+Your image will replace the placeholder and show with all the 3D tilt effects and holographic styling!
