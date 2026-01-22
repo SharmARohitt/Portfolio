@@ -25,20 +25,18 @@ const Skills = () => {
   const [activeSkill, setActiveSkill] = useState<{ icon: any; name: string; color: string } | null>(null);
 
   const skills = [
-    { icon: SiMongodb, name: "MongoDB", color: "#4DB33D" },
-    { icon: SiReact, name: "React.js", color: "#61DAFB" },
-    { icon: SiExpress, name: "Express.js", color: "#000000" },
-    { icon: SiNodedotjs, name: "Node.js", color: "#339933" },
-    { icon: SiNextdotjs, name: "NEXT.js", color: "#000000" },
-    { icon: SiTypescript, name: "TypeScript", color: "#3178C6" },
-    { icon: SiJavascript, name: "JavaScript", color: "#F7DF1E" },
-    { icon: SiPython, name: "Python", color: "#3776AB" },
-    { icon: SiGooglecloud, name: "Cloud Computing", color: "#4285F4" },
-    { icon: SiHtml5, name: "HTML5", color: "#E34F26" },
-    { icon: SiCss3, name: "CSS3", color: "#1572B6" },
-    { icon: SiTensorflow, name: "AI-ML", color: "#FF6F00" },
-    { icon: SiGit, name: "Git", color: "#F05032" },
-    { icon: SiGithub, name: "GitHub", color: "#181717" }
+    { icon: SiReact, name: "Full-Stack SDE", color: "#61DAFB" },
+    { icon: SiNodedotjs, name: "Backend Pro", color: "#339933" },
+    { icon: SiMongodb, name: "App Development", color: "#4DB33D" },
+    { icon: SiExpress, name: "System Design", color: "#000000" },
+    { icon: SiNextdotjs, name: "Microservices", color: "#000000" },
+    { icon: SiTypescript, name: "API Architecture", color: "#3178C6" },
+    { icon: SiPython, name: "FastAPI Expert", color: "#3776AB" },
+    { icon: SiTensorflow, name: "Real-time Systems", color: "#FF6F00" },
+    { icon: SiGooglecloud, name: "Cloud & DevOps", color: "#4285F4" },
+    { icon: SiJavascript, name: "React Native", color: "#F7DF1E" },
+    { icon: SiGit, name: "CI/CD Pipelines", color: "#F05032" },
+    { icon: SiGithub, name: "Production Scale", color: "#181717" }
   ];
 
   useEffect(() => {

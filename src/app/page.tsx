@@ -7,11 +7,9 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import DotGrid from '@/components/DotGrid';
 import GooeyNavigation from '@/components/GooeyNavigation';
 import Skills from '@/components/Skills';
-import ProjectGallery from '@/components/ProjectGallery';
-import Testimonials from '@/components/Testimonials';
 import DotGridBackgroundImproved from '@/components/DotGridBackgroundImproved';
 import RotatingText from '@/components/ui/RotatingText';
-import Stack from '@/components/Stack';
+import InfiniteMenu from '@/components/InfiniteMenu';
 import { useTheme } from '@/contexts/ThemeContext';
 
 // Register GSAP plugins
@@ -257,7 +255,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
+    <div className={`w-full ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
       {/* Navigation */}
       <GooeyNavigation />
 
@@ -357,12 +355,11 @@ export default function Home() {
             transition={{ duration: 1, delay: 1.2 }}
             className="max-w-lg mx-auto text-xl md:text-2xl text-gray-200 font-light"
           >
-            <span className="inline-block mr-2">Pixels</span>
-            <span className="inline-block mr-2 font-bold italic gradient-text">obey</span>
-            <span className="inline-block mr-2">me & </span>
-            <span className="inline-block mr-2">Logic</span>
-            <span className="inline-block mr-2 font-bold italic gradient-text">serves</span>
-            <span className="inline-block">me.</span>
+            <span className="inline-block mr-2">Backend</span>
+            <span className="inline-block mr-2 font-bold italic gradient-text">architect</span>
+            <span className="inline-block mr-2">& Full-Stack</span>
+            <span className="inline-block mr-2 font-bold italic gradient-text">engineer</span>
+            <span className="inline-block">crafting scalable solutions.</span>
           </motion.div>
 
           <motion.div
@@ -402,10 +399,10 @@ export default function Home() {
         <div className="design-strap-container" style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}>
           <div className="scroll-text">
             <h2 className="text-white font-bold italic text-4xl md:text-5xl lg:text-6xl">
-              <span className="pastel-gradient">design</span> that makes people give a damn • 
-              <span className="pastel-gradient">design</span> that makes people give a damn • 
-              <span className="pastel-gradient">design</span> that makes people give a damn • 
-              <span className="pastel-gradient">design</span> that makes people give a damn • 
+              <span className="pastel-gradient">backend systems</span> that scale and perform • 
+              <span className="pastel-gradient">backend systems</span> that scale and perform • 
+              <span className="pastel-gradient">backend systems</span> that scale and perform • 
+              <span className="pastel-gradient">backend systems</span> that scale and perform • 
             </h2>
           </div>
         </div>
@@ -423,10 +420,10 @@ export default function Home() {
         <div className="code-strap-container" style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}>
           <div className="scroll-text">
             <h2 className="text-gray-200 font-mono text-3xl md:text-4xl lg:text-5xl">
-              <span className="terminal-code">code</span> that brings it to life ; 
-              <span className="terminal-code">code</span> that brings it to life ; 
-              <span className="terminal-code">code</span> that brings it to life ; 
-              <span className="terminal-code">code</span> that brings it to life ;
+              <span className="terminal-code">full-stack solutions</span> that deliver results ; 
+              <span className="terminal-code">full-stack solutions</span> that deliver results ; 
+              <span className="terminal-code">full-stack solutions</span> that deliver results ; 
+              <span className="terminal-code">full-stack solutions</span> that deliver results ;
             </h2>
           </div>
         </div>
@@ -446,10 +443,10 @@ export default function Home() {
         <section id="about" className="relative min-h-screen py-20 z-10">
           <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
             <h2 className="font-bold text-4xl md:text-5xl lg:text-7xl mb-12 text-gray-100 leading-tight">
-              Hey I'm <span className="font-bold italic">Rohit Sharma</span> - I make <span className="font-bold italic gradient-text">pixels</span> meet <span className="font-mono font-thin">code</span>
+              Hey I'm <span className="font-bold italic">Rohit Sharma</span> - I architect <span className="font-bold italic gradient-text">scalable systems</span> and craft <span className="font-mono font-thin">production-ready code</span>
             </h2>
             <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed mx-auto">
-              I <span className="italic">design with intent</span> and <span className="font-mono font-thin">code</span> with efficiency - crafting sleek, intuitive experiences that are as smooth to use as they are to look at. No guesswork, no mess - just <span className="italic">clean design, seamless functionality</span>, and a developer's touch to bring it all to life.
+              I <span className="italic">engineer with precision</span> and <span className="font-mono font-thin">code</span> with efficiency - building robust backend architectures, seamless full-stack applications, and real-time systems that handle thousands of users. No shortcuts, no compromises - just <span className="italic">scalable solutions, optimized performance</span>, and a software engineer's expertise to deliver production-grade systems.
             </p>
           </div>
         </section>
@@ -459,190 +456,245 @@ export default function Home() {
           <Skills />
         </div>
 
-        {/* Latest Projects Section - Restructured */}
+        {/* Featured Projects Section - Infinite Menu */}
         <section id="projects" className="relative py-20 z-10">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl mb-6 text-gray-100">
-                Latest <span className="font-bold italic gradient-text">Projects</span>
+                Featured <span className="font-bold italic gradient-text">Projects</span>
               </h2>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                Showcasing <span className="font-mono font-medium text-purple-400">25+ projects</span> across full-stack development, AI/ML, and system design
+                Interactive 3D showcase of production-scale systems built with <span className="font-mono font-medium text-purple-400">modern tech stacks</span>
               </p>
             </div>
 
-            {/* Main Projects Layout - Left Text, Right Stack */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto items-start">
-              
-              {/* Left Side - Recent Projects Text List */}
-              <div className="space-y-8">
-                <div className="text-left">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-100 mb-8">
-                    Recent <span className="gradient-text">Development</span>
-                  </h3>
-                </div>
+            {/* Infinite Menu Container */}
+            <div className="w-full h-[600px] md:h-[700px] lg:h-[800px] rounded-xl overflow-hidden bg-black/20 border border-gray-700/30">
+              <InfiniteMenu 
+                items={[
+                  {
+                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=900&fit=crop&crop=center',
+                    link: 'https://github.com/rohitsharma/urja-sarthi',
+                    title: 'Urja-Sarthi',
+                    description: 'Real-time energy monitoring platform with FastAPI backend processing 10K+ data sources. Reduced latency by 45% with WebSockets and AWS scaling.'
+                  },
+                  {
+                    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=900&h=900&fit=crop&crop=center',
+                    link: 'https://github.com/rohitsharma/indra-digital-twin',
+                    title: 'Indra Digital Twin',
+                    description: 'Enterprise digital twin system using Node.js microservices managing 5K+ assets. Achieved 50% operational efficiency gains through optimized APIs.'
+                  },
+                  {
+                    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&h=900&fit=crop&crop=center',
+                    link: 'https://github.com/rohitsharma/collabcode',
+                    title: 'CollabCode Platform',
+                    description: 'Real-time collaborative coding platform with WebSockets and Redis. Scaled to 3K+ concurrent users with 35% reduced execution delays.'
+                  },
+                  {
+                    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&h=900&fit=crop&crop=center',
+                    link: 'https://github.com/rohitsharma/ecommerce-backend',
+                    title: 'E-Commerce Backend',
+                    description: 'Microservices ecosystem with Django and PostgreSQL handling 10K+ products. Boosted transaction speeds by 40% via query optimizations.'
+                  },
+                  {
+                    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=900&h=900&fit=crop&crop=center',
+                    link: 'https://github.com/rohitsharma/patient-management',
+                    title: 'Patient Management',
+                    description: 'Full-stack healthcare platform with Express.js and MongoDB. Automated scheduling for 1K+ users, cutting admin workload by 40%.'
+                  }
+                ]}
+                scale={1.2}
+              />
+            </div>
 
-                {/* Project List */}
-                <div className="space-y-6">
-                  
-                  {/* Project 1 */}
-                  <div className="group p-6 rounded-xl bg-gray-800/30 border border-gray-700/50 hover:bg-gray-800/50 hover:border-gray-600/50 transition-all duration-300">
-                    <div className="flex items-start justify-between mb-3">
-                      <h4 className="text-xl font-semibold text-gray-100 group-hover:text-purple-400 transition-colors">
-                        AI-Powered Task Manager
-                      </h4>
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">Active</span>
-                    </div>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      Full-stack application with AI task prioritization, real-time collaboration, and intelligent scheduling. Built with Next.js, TypeScript, and OpenAI integration.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full">Next.js</span>
-                      <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">TypeScript</span>
-                      <span className="text-xs bg-teal-500/20 text-teal-300 px-2 py-1 rounded-full">OpenAI</span>
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">MongoDB</span>
-                    </div>
-                  </div>
-
-                  {/* Project 2 */}
-                  <div className="group p-6 rounded-xl bg-gray-800/30 border border-gray-700/50 hover:bg-gray-800/50 hover:border-gray-600/50 transition-all duration-300">
-                    <div className="flex items-start justify-between mb-3">
-                      <h4 className="text-xl font-semibold text-gray-100 group-hover:text-orange-400 transition-colors">
-                        Computer Vision Analytics
-                      </h4>
-                      <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded-full">ML</span>
-                    </div>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      Real-time object detection and tracking system using TensorFlow and OpenCV. Deployed on AWS with scalable microservices architecture.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded-full">TensorFlow</span>
-                      <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded-full">OpenCV</span>
-                      <span className="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded-full">Python</span>
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">AWS</span>
-                    </div>
-                  </div>
-
-                  {/* Project 3 */}
-                  <div className="group p-6 rounded-xl bg-gray-800/30 border border-gray-700/50 hover:bg-gray-800/50 hover:border-gray-600/50 transition-all duration-300">
-                    <div className="flex items-start justify-between mb-3">
-                      <h4 className="text-xl font-semibold text-gray-100 group-hover:text-cyan-400 transition-colors">
-                        Blockchain Trading Platform
-                      </h4>
-                      <span className="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded-full">Web3</span>
-                    </div>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      Decentralized trading platform with smart contracts, real-time price feeds, and portfolio analytics. React frontend with Ethereum integration.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">React</span>
-                      <span className="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded-full">Solidity</span>
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full">Web3.js</span>
-                      <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded-full">Node.js</span>
-                    </div>
-                  </div>
-
-                  {/* Project 4 */}
-                  <div className="group p-6 rounded-xl bg-gray-800/30 border border-gray-700/50 hover:bg-gray-800/50 hover:border-gray-600/50 transition-all duration-300">
-                    <div className="flex items-start justify-between mb-3">
-                      <h4 className="text-xl font-semibold text-gray-100 group-hover:text-pink-400 transition-colors">
-                        Mobile Fitness Companion
-                      </h4>
-                      <span className="text-xs bg-pink-500/20 text-pink-300 px-2 py-1 rounded-full">Mobile</span>
-                    </div>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      Cross-platform fitness app with AI-powered workout plans, nutrition tracking, and social features. Built with React Native and Firebase.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full">React Native</span>
-                      <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded-full">Firebase</span>
-                      <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">TypeScript</span>
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">Node.js</span>
-                    </div>
-                  </div>
-
-                  {/* Project 5 */}
-                  <div className="group p-6 rounded-xl bg-gray-800/30 border border-gray-700/50 hover:bg-gray-800/50 hover:border-gray-600/50 transition-all duration-300">
-                    <div className="flex items-start justify-between mb-3">
-                      <h4 className="text-xl font-semibold text-gray-100 group-hover:text-green-400 transition-colors">
-                        DevOps Automation Suite
-                      </h4>
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">DevOps</span>
-                    </div>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      Complete CI/CD pipeline with automated testing, deployment, and monitoring. Kubernetes orchestration with Docker containerization.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full">Docker</span>
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">Kubernetes</span>
-                      <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded-full">Jenkins</span>
-                      <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">AWS</span>
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-6 pt-8 border-t border-gray-700/30">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-400 mb-1">25+</div>
-                    <div className="text-gray-400 text-sm">Projects</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-400 mb-1">15+</div>
-                    <div className="text-gray-400 text-sm">Technologies</div>
-                  </div>
-                </div>
+            {/* Project Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+              <div className="text-center p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
+                <div className="text-3xl font-bold text-purple-400 mb-2">5+</div>
+                <div className="text-gray-400 text-sm">Production Systems</div>
               </div>
-
-              {/* Right Side - Stack Component */}
-              <div className="lg:sticky lg:top-20">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-100 mb-4">
-                    Interactive <span className="gradient-text">Portfolio</span>
-                  </h3>
-                </div>
-                <div className="flex justify-center">
-                  <Stack 
-                    cardDimensions={{ width: 650, height: 420 }}
-                    sensitivity={180}
-                    animationConfig={{ stiffness: 280, damping: 25 }}
-                  />
-                </div>
+              <div className="text-center p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
+                <div className="text-3xl font-bold text-blue-400 mb-2">10K+</div>
+                <div className="text-gray-400 text-sm">Users Served</div>
+              </div>
+              <div className="text-center p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
+                <div className="text-3xl font-bold text-green-400 mb-2">99.99%</div>
+                <div className="text-gray-400 text-sm">Uptime</div>
+              </div>
+              <div className="text-center p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
+                <div className="text-3xl font-bold text-orange-400 mb-2">45%</div>
+                <div className="text-gray-400 text-sm">Performance Boost</div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Projects Section - New Component */}
-        <div className="relative z-10">
-          <ProjectGallery />
-        </div>
-
-        {/* Testimonials Section */}
-        <div className="relative z-10">
-          <Testimonials />
-        </div>
-        
         {/* Contact Section */}
-        <section id="contact" className="relative min-h-screen py-20 z-10">
+        <section id="contact" className="relative py-20 z-10 bg-gray-900">
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-gray-100 mb-6">
-              Done with my <span className="font-bold italic gradient-text">designer</span> side?
+              Ready to build something <span className="font-bold italic gradient-text">scalable</span>?
             </h2>
             <p className="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-              Explore my developer portfolio to see the code behind the designs
+              Let's architect backend systems and full-stack solutions that handle real-world scale
             </p>
-            <a 
-              href="https://rohitsharma.vercel.app" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-semibold text-lg hover:opacity-90 transition-opacity duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform duration-300"
-            >
-              View Developer Portfolio
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a 
+                href="mailto:rohittsharmaa2005@gmail.com" 
+                className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-semibold text-lg hover:opacity-90 transition-opacity duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform duration-300"
+              >
+                Get In Touch
+              </a>
+              <a 
+                href="https://github.com/rohitsharma" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 rounded-full bg-gray-800 text-white font-semibold text-lg hover:bg-gray-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform duration-300"
+              >
+                View GitHub
+              </a>
+            </div>
           </div>
         </section>
+
+        {/* Footer Section - Gen Z Style */}
+        <footer className="relative py-16 z-10 bg-black border-t border-gray-800">
+          <div className="container mx-auto px-4">
+            {/* Main Footer Content */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+              
+              {/* Left - Personal Brand */}
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    Rohit <span className="gradient-text">Sharma</span>
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Full-Stack Software Engineer crafting scalable solutions that actually work 💯
+                  </p>
+                </div>
+                
+                {/* Status Badge */}
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-green-400 text-sm font-medium">Available for opportunities</span>
+                </div>
+
+                {/* Quick Stats */}
+                <div className="flex space-x-6">
+                  <div className="text-center">
+                    <div className="text-xl font-bold text-purple-400">5+</div>
+                    <div className="text-xs text-gray-500">Production Systems</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-xl font-bold text-blue-400">10K+</div>
+                    <div className="text-xs text-gray-500">Users Served</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-xl font-bold text-green-400">99.99%</div>
+                    <div className="text-xs text-gray-500">Uptime</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Center - Quick Links */}
+              <div className="space-y-6">
+                <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+                <div className="grid grid-cols-2 gap-3">
+                  <a href="#about" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">About</a>
+                  <a href="#skills" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">Skills</a>
+                  <a href="#projects" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">Projects</a>
+                  <a href="#contact" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">Contact</a>
+                  <a href="/about" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">Full About</a>
+                  <a href="mailto:rohittsharmaa2005@gmail.com" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">Email</a>
+                </div>
+
+                {/* Tech Stack Pills */}
+                <div>
+                  <p className="text-xs text-gray-500 mb-2">Current Stack:</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 bg-gray-800 text-gray-300 rounded-full text-xs">FastAPI</span>
+                    <span className="px-2 py-1 bg-gray-800 text-gray-300 rounded-full text-xs">React</span>
+                    <span className="px-2 py-1 bg-gray-800 text-gray-300 rounded-full text-xs">PostgreSQL</span>
+                    <span className="px-2 py-1 bg-gray-800 text-gray-300 rounded-full text-xs">Docker</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right - Social & Contact */}
+              <div className="space-y-6">
+                <h4 className="text-lg font-semibold text-white">Let's Connect</h4>
+                
+                {/* Social Links */}
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://github.com/rohitsharma" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors group"
+                  >
+                    <svg className="w-5 h-5 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                  </a>
+                  <a 
+                    href="https://linkedin.com/in/rohitsharma" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors group"
+                  >
+                    <svg className="w-5 h-5 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                  <a 
+                    href="mailto:rohittsharmaa2005@gmail.com"
+                    className="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors group"
+                  >
+                    <svg className="w-5 h-5 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </a>
+                </div>
+
+                {/* Fun Fact */}
+                <div className="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-xs text-gray-500 mb-1">Fun Fact 🚀</p>
+                  <p className="text-sm text-gray-300">
+                    I debug with console.log() and I'm not ashamed of it
+                  </p>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span className="text-sm text-gray-400">Delhi, India 🇮🇳</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div className="flex items-center space-x-4">
+                <p className="text-sm text-gray-500">
+                  © 2025 Rohit Sharma. Built with ❤️ and lots of ☕
+                </p>
+              </div>
+              
+              <div className="flex items-center space-x-6">
+                <span className="text-xs text-gray-600">Made with</span>
+                <div className="flex space-x-2">
+                  <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Next.js</span>
+                  <span className="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">TypeScript</span>
+                  <span className="px-2 py-1 bg-cyan-500/20 text-cyan-300 rounded text-xs">Tailwind</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );

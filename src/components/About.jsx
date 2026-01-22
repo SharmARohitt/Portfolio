@@ -247,7 +247,7 @@ function About() {
           >
             <ProfileCard
               name="Rohit Sharma"
-              title="Full Stack Developer"
+              title="Full-Stack Software Engineer"
               handle="rohitsharma"
               status="Available for work"
               contactText="Contact Me"
@@ -257,7 +257,7 @@ function About() {
               enableMobileTilt={false}
               onContactClick={() => {
                 // Scroll to contact section or open email
-                window.location.href = 'mailto:rohitsharma@example.com';
+                window.location.href = 'mailto:rohittsharmaa2005@gmail.com';
               }}
             />
           </div>
@@ -265,14 +265,14 @@ function About() {
           <div ref={bioSectionRef}>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">Hi, I'm <span className="font-serif font-bold italic gradient-text">Rohit Sharma</span></h2>
             <p className={`text-lg md:text-xl leading-relaxed mb-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-              Designer by eye, developer by logic—basically, the <span className="font-medium relative px-1">
-                <span className="relative z-10">Swiss Army knife</span>
-                <span className={`absolute inset-0 ${darkMode ? 'bg-gray-700' : 'bg-gray-200'} rounded opacity-30 transform -skew-x-3`}></span>
-              </span> of the web. I craft <span className="italic">sleek, intuitive UIs</span> and back them up with <span className="font-mono font-medium">clean, efficient code</span>. If bad design hurts your soul and buggy code makes you cringe, we're already on the same page. Let's build something <span className="font-medium text-pink-500 dark:text-pink-400">beautiful</span> and <span className="font-medium text-purple-500 dark:text-purple-400">functional</span>—because why settle for less?
+              <span className="font-medium text-purple-500 dark:text-purple-400">Full-Stack Software Engineer</span> crafting scalable backend systems and seamless applications with a reputation for writing <span className="font-mono font-medium">clean, reliable, and production-ready code</span>. Rapid learner, problem solver, and collaborator, consistently driving high-quality solutions and making strong technical impact in fast-paced, innovative environments.
+            </p>
+            <p className={`text-lg md:text-xl leading-relaxed mb-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              Specialized in <span className="font-medium text-blue-500 dark:text-blue-400">backend architectures</span>, <span className="font-medium text-green-500 dark:text-green-400">microservices</span>, and <span className="font-medium text-orange-500 dark:text-orange-400">real-time systems</span> that handle thousands of concurrent users. From FastAPI backends to React Native apps, I build solutions that scale and perform under pressure.
             </p>
             <div className="mt-8 mb-2 relative">
               <p className={`text-lg md:text-xl leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                My one motto - <span className="font-serif font-bold italic text-xl md:text-2xl xl:text-3xl gradient-text" style={{ letterSpacing: "-0.02em", textShadow: "0 2px 5px rgba(0, 0, 0, 0.12)" }}>Design what makes people give a damn</span>
+                My engineering philosophy - <span className="font-serif font-bold italic text-xl md:text-2xl xl:text-3xl gradient-text" style={{ letterSpacing: "-0.02em", textShadow: "0 2px 5px rgba(0, 0, 0, 0.12)" }}>Code that scales, systems that deliver</span>
               </p>
               <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-orange-500/5 rounded-lg blur-md -z-10"></div>
             </div>
@@ -416,27 +416,18 @@ function About() {
               <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
-                    <SiTensorflow className="text-xl text-orange-500" />
+                    <BiLogoTypescript className="text-xl text-blue-400" />
                   </div>
-                  <div className="font-normal text-center">TensorFlow</div>
+                  <div className="font-normal text-center">TypeScript</div>
                 </div>
               </div>
               
               <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
-                    <SiScikitlearn className="text-xl text-blue-400" />
+                    <TbBrandNextjs className="text-xl text-white" />
                   </div>
-                  <div className="font-normal text-center">Scikit-Learn</div>
-                </div>
-              </div>
-              
-              <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
-                    <FaCubes className="text-xl text-purple-400" />
-                  </div>
-                  <div className="font-normal text-center">Data Structures</div>
+                  <div className="font-normal text-center">Node.js</div>
                 </div>
               </div>
               
@@ -445,16 +436,7 @@ function About() {
                   <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
                     <FaCode className="text-xl text-green-400" />
                   </div>
-                  <div className="font-normal text-center">Algorithms</div>
-                </div>
-              </div>
-              
-              <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
-                    <SiOpenai className="text-xl text-teal-400" />
-                  </div>
-                  <div className="font-normal text-center">Machine Learning</div>
+                  <div className="font-normal text-center">FastAPI</div>
                 </div>
               </div>
               
@@ -463,7 +445,43 @@ function About() {
                   <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
                     <FaDatabase className="text-xl text-red-400" />
                   </div>
-                  <div className="font-normal text-center">Database Systems</div>
+                  <div className="font-normal text-center">PostgreSQL</div>
+                </div>
+              </div>
+              
+              <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
+                    <FaCubes className="text-xl text-purple-400" />
+                  </div>
+                  <div className="font-normal text-center">Microservices</div>
+                </div>
+              </div>
+              
+              <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
+                    <SiOpenai className="text-xl text-teal-400" />
+                  </div>
+                  <div className="font-normal text-center">React Native</div>
+                </div>
+              </div>
+              
+              <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
+                    <SiTensorflow className="text-xl text-orange-500" />
+                  </div>
+                  <div className="font-normal text-center">Docker</div>
+                </div>
+              </div>
+              
+              <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
+                    <SiScikitlearn className="text-xl text-blue-400" />
+                  </div>
+                  <div className="font-normal text-center">AWS</div>
                 </div>
               </div>
               
@@ -472,7 +490,7 @@ function About() {
                   <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
                     <SiJupyter className="text-xl text-orange-400" />
                   </div>
-                  <div className="font-normal text-center">Jupyter</div>
+                  <div className="font-normal text-center">GraphQL</div>
                 </div>
               </div>
               
@@ -481,7 +499,7 @@ function About() {
                   <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
                     <SiNumpy className="text-xl text-blue-300" />
                   </div>
-                  <div className="font-normal text-center">NumPy</div>
+                  <div className="font-normal text-center">Redis</div>
                 </div>
               </div>
               
@@ -490,16 +508,7 @@ function About() {
                   <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
                     <FaGitAlt className="text-xl text-orange-600" />
                   </div>
-                  <div className="font-normal text-center">Git</div>
-                </div>
-              </div>
-              
-              <div className={`skill-item p-6 rounded-xl ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl`}>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-white mb-4">
-                    <FaLinux className="text-xl text-yellow-500" />
-                  </div>
-                  <div className="font-normal text-center">Linux</div>
+                  <div className="font-normal text-center">CI/CD</div>
                 </div>
               </div>
             </div>
@@ -520,53 +529,136 @@ function About() {
           <div className="max-w-4xl mx-auto space-y-10">
             <div className={`timeline-item relative pl-10 pb-10 ${darkMode ? 'border-l-2 border-gray-700' : 'border-l-2 border-gray-300'}`}>
               <div className={`absolute left-[-8px] top-0 w-4 h-4 rounded-full ${darkMode ? 'bg-green-500' : 'bg-green-400'}`}></div>
-              <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Founder</h3>
-              <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>TactNova · Jun 2025 - Present</p>
-              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                Founded and leading TactNova, driving innovation and strategic development. Building cutting-edge solutions and establishing the company's technical foundation and vision.
+              <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Backend Software Developer</h3>
+              <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Ministry of Education (SIH) · Dec 2025 - Jan 2026 · Government Project</p>
+              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-3`}>
+                Architected high-performance backend APIs using <span className="font-mono text-purple-400">FastAPI</span> and <span className="font-mono text-blue-400">PostgreSQL</span> → Delivered <span className="font-bold text-green-400">99.99% uptime</span> for 2,000+ concurrent users, ensuring robust security and scalability under rigorous national evaluations.
               </p>
+              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Engineered microservices with real-time data pipelines and caching → Reduced API response times by <span className="font-bold text-orange-400">40%</span>, optimizing for mission-critical government operations.
+              </p>
+              <span className={`inline-block px-3 py-1 text-xs rounded-full ${darkMode ? 'bg-green-700 text-green-300' : 'bg-green-200 text-green-600'} mt-3`}>
+                Government Project · Delhi, India
+              </span>
             </div>
             
             <div className={`timeline-item relative pl-10 pb-10 ${darkMode ? 'border-l-2 border-gray-700' : 'border-l-2 border-gray-300'}`}>
               <div className={`absolute left-[-8px] top-0 w-4 h-4 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-400'}`}></div>
-              <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Internship Trainee</h3>
+              <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Software Development Intern - Backend Focus</h3>
               <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Inventronics · Jan 2025 - Mar 2025 · 3 months</p>
-              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
-                Gained hands-on experience in technology solutions and product development. Worked on-site in Gurugram, Haryana, contributing to innovative projects and learning industry best practices.
+              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-3`}>
+                Developed enterprise-grade backend modules with <span className="font-mono text-green-400">Flask</span> and <span className="font-mono text-blue-400">Django</span>, integrating advanced REST/GraphQL APIs → Automated workflows for 1,000+ users, slashing operational overhead by <span className="font-bold text-orange-400">45%</span>.
               </p>
-              <span className={`inline-block px-3 py-1 text-xs rounded-full ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-600'}`}>
+              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Implemented <span className="font-mono text-purple-400">Docker</span> containerization and performance-tuned data pipelines → Achieved seamless zero-downtime deployments and <span className="font-bold text-green-400">30%</span> faster query execution.
+              </p>
+              <span className={`inline-block px-3 py-1 text-xs rounded-full ${darkMode ? 'bg-blue-700 text-blue-300' : 'bg-blue-200 text-blue-600'} mt-3`}>
                 On-site · Gurugram, Haryana, India
               </span>
             </div>
             
             <div className={`timeline-item relative pl-10 pb-10 ${darkMode ? 'border-l-2 border-gray-700' : 'border-l-2 border-gray-300'}`}>
               <div className={`absolute left-[-8px] top-0 w-4 h-4 rounded-full ${darkMode ? 'bg-orange-500' : 'bg-orange-400'}`}></div>
-              <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Mentor</h3>
-              <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Social Winter of Code (SWOC) · Dec 2024 - Mar 2025 · 4 months</p>
-              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                Mentored aspiring developers in open-source contributions during SWOC. Guided participants through coding challenges, project development, and best practices in collaborative software development.
+              <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Full-Stack Development Intern</h3>
+              <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Prodigy InfoTech · Nov 2024 - Dec 2024 · 2 months</p>
+              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-3`}>
+                Built resilient full-stack components with <span className="font-mono text-green-400">Node.js</span>, <span className="font-mono text-blue-400">Express</span>, and <span className="font-mono text-cyan-400">React/Angular</span> → Enhanced application performance, cutting load times by <span className="font-bold text-orange-400">25%</span> via optimized endpoints.
               </p>
+              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Integrated CI/CD pipelines and scalable databases (MongoDB/Redis) → Supported high-traffic scenarios with 500+ sessions, maintaining fault-tolerant operations.
+              </p>
+              <span className={`inline-block px-3 py-1 text-xs rounded-full ${darkMode ? 'bg-orange-700 text-orange-300' : 'bg-orange-200 text-orange-600'} mt-3`}>
+                Remote
+              </span>
             </div>
             
             <div className={`timeline-item relative pl-10 pb-10 ${darkMode ? 'border-l-2 border-gray-700' : 'border-l-2 border-gray-300'}`}>
               <div className={`absolute left-[-8px] top-0 w-4 h-4 rounded-full ${darkMode ? 'bg-purple-500' : 'bg-purple-400'}`}></div>
-              <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Software Development Intern</h3>
-              <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Prodigy InfoTech · Nov 2024 - Dec 2024 · 2 months</p>
-              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
-                Developed software solutions and gained experience in full-stack development. Contributed to multiple projects while working remotely, enhancing technical skills and professional development practices.
+              <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Full-Stack Mentor</h3>
+              <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Social Winter of Code (SWOC) · Dec 2024 - Mar 2025 · 4 months</p>
+              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-3`}>
+                Led <span className="font-bold text-cyan-400">25+ contributors</span> in designing scalable backend and full-stack architectures → Boosted project velocity by <span className="font-bold text-green-400">35%</span> through expert code reviews and best-practice implementations.
               </p>
-              <span className={`inline-block px-3 py-1 text-xs rounded-full ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-600'}`}>
-                Remote · Delhi, India
+              <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Directed technical workshops on system optimization and agile development → Elevated team capabilities, producing production-caliber code for innovative applications.
+              </p>
+              <span className={`inline-block px-3 py-1 text-xs rounded-full ${darkMode ? 'bg-purple-700 text-purple-300' : 'bg-purple-200 text-purple-600'} mt-3`}>
+                Remote · Open Source
               </span>
             </div>
             
             <div className={`timeline-item relative pl-10 ${darkMode ? 'border-l-2 border-gray-700' : 'border-l-2 border-gray-300'}`}>
               <div className={`absolute left-[-8px] top-0 w-4 h-4 rounded-full ${darkMode ? 'bg-indigo-500' : 'bg-indigo-400'}`}></div>
               <h3 className="font-bold text-2xl mb-2 text-gray-900 dark:text-gray-100">Bachelor of Computer Science and Engineering</h3>
-              <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Guru Gobind Singh Indraprastha University · 2022 - Present</p>
+              <p className={`mb-3 font-mono text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Guru Gobind Singh Indraprastha University · 2022 - 2026 · CGPA: 8.3</p>
               <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                Pursuing Computer Science and Engineering with focus on software development, artificial intelligence, and data structures. Actively involved in projects and technical communities.
+                Pursuing Computer Science and Engineering with focus on <span className="font-medium text-blue-400">software architecture</span>, <span className="font-medium text-green-400">system design</span>, and <span className="font-medium text-purple-400">scalable backend systems</span>. Actively involved in technical projects and open-source contributions.
               </p>
+            </div>
+          </div>
+          
+          {/* Achievements Section */}
+          <div className="max-w-4xl mx-auto mt-16">
+            <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100">
+              Key <span className="font-serif font-bold italic gradient-text">Achievements</span>
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-800/50 border border-gray-700/50' : 'bg-white border border-gray-200'} hover:shadow-lg transition-all duration-300`}>
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">🏆</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">Hackathon Champion</h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}>
+                      Secured victories in <span className="font-bold text-orange-400">5+ prestigious hackathons</span> by delivering scalable, production-grade backend and full-stack innovations under expert scrutiny.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-800/50 border border-gray-700/50' : 'bg-white border border-gray-200'} hover:shadow-lg transition-all duration-300`}>
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">💼</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">Freelance Success</h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}>
+                      Executed high-impact freelance projects, architecting <span className="font-bold text-blue-400">backend automations</span> and <span className="font-bold text-green-400">full-stack solutions</span> for demanding clients.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-800/50 border border-gray-700/50' : 'bg-white border border-gray-200'} hover:shadow-lg transition-all duration-300`}>
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">⚡</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">Performance Optimization</h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}>
+                      Consistently delivered <span className="font-bold text-purple-400">40%+ performance improvements</span> across backend systems, handling thousands of concurrent users with 99.99% uptime.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-800/50 border border-gray-700/50' : 'bg-white border border-gray-200'} hover:shadow-lg transition-all duration-300`}>
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-teal-500 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">🚀</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">Production-Scale Impact</h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}>
+                      Built systems serving <span className="font-bold text-cyan-400">10,000+ users</span> with real-time data processing, microservices architecture, and enterprise-grade security implementations.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

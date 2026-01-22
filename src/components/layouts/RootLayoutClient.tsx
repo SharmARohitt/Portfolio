@@ -14,9 +14,9 @@ export default function RootLayoutClient({
   playfair: string;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth dark">
       <body
-        className={`${geistSans} ${geistMono} ${playfair} antialiased`}
+        className={`${geistSans} ${geistMono} ${playfair} antialiased bg-gray-900`}
       >
         <ThemeProvider>
           {children}
