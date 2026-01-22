@@ -19,6 +19,8 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -30,8 +32,27 @@ body {
 /* Fix for any extra space at bottom */
 html.dark {
   background-color: #111827; /* gray-900 */
+  height: 100%;
 }
 
 html.dark body {
   background-color: #111827; /* gray-900 */
+  min-height: 100%;
 }
+
+/* Ensure no extra space after footer */
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove any default margins that might cause extra space */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll */
+html {
+  overflow-x: hidden;
+}   

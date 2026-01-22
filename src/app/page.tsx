@@ -88,12 +88,13 @@ export default function Home() {
     let animationFrameId: number;
 
     function animate() {
-      if (!ctx) return;
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, width, height);
       animationTime += config.waveSpeed;
 
       for (let i = 0; i < points.length; i++) {
         const point = points[i];
+        if (!point) continue; // Add null check
         const noiseX = noise(point.originX * config.noiseScale, point.originY * config.noiseScale + animationTime);
         const noiseY = noise(point.originX * config.noiseScale + animationTime, point.originY * config.noiseScale);
         point.x = point.originX + (noiseX * 2 - 1) * config.waveHeight;
@@ -255,7 +256,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={`w-full ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
+    <div className={`w-full min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
       {/* Navigation */}
       <GooeyNavigation />
 
@@ -468,44 +469,50 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Infinite Menu Container */}
-            <div className="w-full h-[600px] md:h-[700px] lg:h-[800px] rounded-xl overflow-hidden bg-black/20 border border-gray-700/30">
-              <InfiniteMenu 
-                items={[
-                  {
-                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=900&fit=crop&crop=center',
-                    link: 'https://github.com/rohitsharma/urja-sarthi',
-                    title: 'Urja-Sarthi',
-                    description: 'Real-time energy monitoring platform with FastAPI backend processing 10K+ data sources. Reduced latency by 45% with WebSockets and AWS scaling.'
-                  },
-                  {
-                    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=900&h=900&fit=crop&crop=center',
-                    link: 'https://github.com/rohitsharma/indra-digital-twin',
-                    title: 'Indra Digital Twin',
-                    description: 'Enterprise digital twin system using Node.js microservices managing 5K+ assets. Achieved 50% operational efficiency gains through optimized APIs.'
-                  },
-                  {
-                    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&h=900&fit=crop&crop=center',
-                    link: 'https://github.com/rohitsharma/collabcode',
-                    title: 'CollabCode Platform',
-                    description: 'Real-time collaborative coding platform with WebSockets and Redis. Scaled to 3K+ concurrent users with 35% reduced execution delays.'
-                  },
-                  {
-                    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&h=900&fit=crop&crop=center',
-                    link: 'https://github.com/rohitsharma/ecommerce-backend',
-                    title: 'E-Commerce Backend',
-                    description: 'Microservices ecosystem with Django and PostgreSQL handling 10K+ products. Boosted transaction speeds by 40% via query optimizations.'
-                  },
-                  {
-                    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=900&h=900&fit=crop&crop=center',
-                    link: 'https://github.com/rohitsharma/patient-management',
-                    title: 'Patient Management',
-                    description: 'Full-stack healthcare platform with Express.js and MongoDB. Automated scheduling for 1K+ users, cutting admin workload by 40%.'
-                  }
-                ]}
-                scale={1.2}
-              />
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="w-full h-[700px] md:h-[800px] lg:h-[900px] rounded-2xl overflow-hidden bg-black/20 border border-gray-700/30 backdrop-blur-sm"
+            >
+              <div style={{ height: '100%', position: 'relative' }}>
+                <InfiniteMenu 
+                  items={[
+                    {
+                      image: '/project1.svg',
+                      link: 'https://github.com/rohitsharma/urja-sarthi',
+                      title: 'Urja-Sarthi',
+                      description: 'Real-time energy monitoring platform with FastAPI backend processing 10K+ data sources. Reduced latency by 45% with WebSockets and AWS scaling.'
+                    },
+                    {
+                      image: '/project2.svg',
+                      link: 'https://github.com/rohitsharma/indra-digital-twin',
+                      title: 'Indra Digital Twin',
+                      description: 'Enterprise digital twin system using Node.js microservices managing 5K+ assets. Achieved 50% operational efficiency gains through optimized APIs.'
+                    },
+                    {
+                      image: '/project3.svg',
+                      link: 'https://github.com/rohitsharma/collabcode',
+                      title: 'CollabCode Platform',
+                      description: 'Real-time collaborative coding platform with WebSockets and Redis. Scaled to 3K+ concurrent users with 35% reduced execution delays.'
+                    },
+                    {
+                      image: '/project4.svg',
+                      link: 'https://github.com/rohitsharma/ecommerce-backend',
+                      title: 'E-Commerce Backend',
+                      description: 'Microservices ecosystem with Django and PostgreSQL handling 10K+ products. Boosted transaction speeds by 40% via query optimizations.'
+                    },
+                    {
+                      image: '/project5.svg',
+                      link: 'https://github.com/rohitsharma/patient-management',
+                      title: 'Patient Management',
+                      description: 'Full-stack healthcare platform with Express.js and MongoDB. Automated scheduling for 1K+ users, cutting admin workload by 40%.'
+                    }
+                  ]}
+                  scale={1.2}
+                />
+              </div>
+            </motion.div>
 
             {/* Project Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
@@ -628,7 +635,7 @@ export default function Home() {
                 {/* Social Links */}
                 <div className="flex space-x-4">
                   <a 
-                    href="https://github.com/rohitsharma" 
+                    href="https://github.com/SharmARohitt" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors group"
@@ -638,7 +645,7 @@ export default function Home() {
                     </svg>
                   </a>
                   <a 
-                    href="https://linkedin.com/in/rohitsharma" 
+                    href="https://linkedin.com/in/rohittshharmaaa" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors group"

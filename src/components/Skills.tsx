@@ -172,21 +172,15 @@ const Skills = () => {
         
         {/* Skills in a circle */}
         {skills.map((skill, index) => {
-          // Calculate position on circle - radius should match exactly 40% (half of 80% ring)
-          const angle = (index * (2 * Math.PI / skills.length));
-          const radius = 40; // 40% - exactly half of the 80% ring diameter to place icons ON the ring
-          const x = 50 + radius * Math.cos(angle);
-          const y = 50 + radius * Math.sin(angle);
-          
           return (
             <div
               key={skill.name}
               ref={(el) => { skillsRef.current[index] = el }}
               className={`absolute skill-item transition-all duration-300 flex flex-col items-center ${activeSkill?.name === skill.name ? 'active' : ''}`}
               style={{
-                left: `${x}%`,
-                top: `${y}%`,
-                transform: 'translate(-50%, -50%)', // Perfect centering on the ring
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)', // Will be positioned by GSAP
               }}
             >
               <div className="relative group">
@@ -220,9 +214,8 @@ const Skills = () => {
                   <div 
                     className="absolute whitespace-nowrap font-bold pointer-events-none"
                     style={{
-                      // Position the label based on which quadrant the icon is in
-                      left: x < 50 ? 'calc(100% + 8px)' : 'auto',
-                      right: x >= 50 ? 'calc(100% + 8px)' : 'auto',
+                      // Position the label to the right of the icon
+                      left: 'calc(100% + 8px)',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       color: skill.color,
